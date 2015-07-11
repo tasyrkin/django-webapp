@@ -1,2 +1,2 @@
 # django-webapp
-Sample webapp written with dijango framework
+Sample webapp written with django framework
