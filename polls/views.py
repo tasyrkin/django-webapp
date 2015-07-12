@@ -14,8 +14,6 @@ def index(request):
         'question_list': question_list,
     })
 
-    print question_list
-
     return HttpResponse(template.render(context))
 
 def detail(request, question_id):
