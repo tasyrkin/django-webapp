@@ -1,9 +1,22 @@
 from django.shortcuts import render
 
 from django.http import HttpResponse
+from django.template import RequestContext, loader
+
+from models import Question
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    question_list = Question.objects.order_by('-pub_date')
+
+    template = loader.get_template('polls/index.html')
+
+    context = RequestContext(request, {
+        'question_list': question_list,
+    })
+
+    print question_list
+
+    return HttpResponse(template.render(context))
 
 def detail(request, question_id):
     return HttpResponse("You are looking at the question %s." % question_id)
